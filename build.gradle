@@ -1,13 +1,16 @@
 plugins {
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
+apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile 'com.sparkjava:spark-core:2.9.3'
+    implementation 'com.sparkjava:spark-core:2.9.3'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
 
