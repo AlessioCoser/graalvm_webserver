@@ -9,7 +9,7 @@ public class App {
     static final Logger log = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
-        Server server = new Server().start();
+        Server server = Server.ignite();
         handleStopSignal(server);
     }
 

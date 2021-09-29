@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ServerTest {
     @Test
     public void homePathShouldRespondWithHelloWorld() throws Exception {
-        try (Server server = buildServer()) {
+        try (Server server = Server.ignite()) {
             assertEquals("Hello World", get("http://localhost:4545/").body());
         }
     }
@@ -22,10 +22,6 @@ public class ServerTest {
     private HttpResponse<String> get(String url) throws IOException, InterruptedException {
         var request = HttpRequest.newBuilder(URI.create(url)).build();
         return HttpClient.newHttpClient().send(request, ofString());
-    }
-
-    private Server buildServer() {
-        return new Server().start();
     }
 }
 
