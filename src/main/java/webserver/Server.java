@@ -5,12 +5,11 @@ import spark.Service;
 
 public class Server implements AutoCloseable {
     private Logger log;
+    private Service service;
 
     public Server(Logger log) {
         this.log = log;
     }
-
-    private Service service;
 
     public Server start() {
         log.info("*** Starting the server");
