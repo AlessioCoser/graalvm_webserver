@@ -9,8 +9,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.sparkjava:spark-core:2.9.3'
-    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'com.sparkjava:spark-core:2.7.2'
+    implementation 'org.slf4j:slf4j-simple:1.7.13'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
 
