@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ServerTest {
     @Test
     public void homePathShouldRespondWithHelloWorld() throws Exception {
-        try (Server server = Server.ignite()) {
+        try (Server server = Server.ignite(4545)) {
             assertEquals("Hello World", get("http://localhost:4545/").body());
         }
     }

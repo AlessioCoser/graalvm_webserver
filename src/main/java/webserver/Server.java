@@ -4,14 +4,19 @@ import spark.Service;
 
 public class Server implements AutoCloseable {
     private Service service;
+    private final Integer port;
 
-    public static Server ignite() {
-        return new Server().start();
+    public Server(Integer port) {
+        this.port = port;
+    }
+
+    public static Server ignite(Integer port) {
+        return new Server(port).start();
     }
 
     public Server start() {
         service = Service.ignite();
-        service.port(4545);
+        service.port(port);
         configureRouting();
         service.awaitInitialization();
         return this;
