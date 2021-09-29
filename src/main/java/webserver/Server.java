@@ -1,15 +1,12 @@
 package webserver;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.Service;
 
 public class Server implements AutoCloseable {
-    private Logger log;
+    private final Logger log = LoggerFactory.getLogger(Server.class);
     private Service service;
-
-    public Server(Logger log) {
-        this.log = log;
-    }
 
     public Server start() {
         log.info("*** Starting the server");

@@ -6,12 +6,11 @@ import org.slf4j.LoggerFactory;
 import sun.misc.Signal;
 
 public class App {
-    static Logger log = LoggerFactory.getLogger(App.class);
+    static final Logger log = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
-        Server server = new Server(log);
+        Server server = new Server().start();
         handleStopSignal(server);
-        server.start();
     }
 
     private static void handleStopSignal(Server server) {

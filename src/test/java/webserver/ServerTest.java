@@ -1,8 +1,6 @@
 package webserver;
 
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.Marker;
 
 import java.io.IOException;
 import java.net.URI;
@@ -27,7 +25,7 @@ public class ServerTest {
     }
 
     private Server buildServer() {
-        return new Server(new FakeLogger()).start();
+        return new Server().start();
     }
 }
 
