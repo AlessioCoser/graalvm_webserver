@@ -1,5 +1,9 @@
 # GraalVm WebServer with Spark Java on Docker 
 
+## Prerequisites
+- Java 11
+- Docker
+
 ### Build the application
 ```
 ./gradlew clean build

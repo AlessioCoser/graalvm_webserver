@@ -17,7 +17,7 @@ dependencies {
 }
 
 application {
-    mainClassName = 'webserver.App'
+    mainClass.set('webserver.App')
 }
 
 tasks.named('test') {
