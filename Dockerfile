@@ -14,5 +14,7 @@ RUN native-image \
     -H:+ReportExceptionStackTraces
 
 FROM scratch
+ARG VERSION
+ENV BUILD_VERSION=$VERSION
 COPY --from=build /build/app /app
 CMD ["/app"]

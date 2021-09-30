@@ -14,13 +14,18 @@ Build the application and the docker image
 ./gradlew clean build
 ```
 ```
-docker build -t webserver .
+docker build --build-arg VERSION=[build-version] -t webserver .
 ```
 
 ## Run
 Run the docker container 
 ```
 docker run --rm -p 4545:4545 -t webserver
+```
+
+Run the docker container on different port
+```
+docker run --rm --env PORT=4321 -p 4321:4321 -t webserver
 ```
 
 ## Try it out

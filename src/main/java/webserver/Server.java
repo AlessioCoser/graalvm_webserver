@@ -4,19 +4,19 @@ import spark.Service;
 
 public class Server implements AutoCloseable {
     private Service service;
-    private final Integer port;
+    private final Config config;
 
-    public Server(Integer port) {
-        this.port = port;
+    public Server(Config config) {
+        this.config = config;
     }
 
-    public static Server ignite(Integer port) {
-        return new Server(port).start();
+    public static Server ignite(Config config) {
+        return new Server(config).start();
     }
 
     public Server start() {
         service = Service.ignite();
-        service.port(port);
+        service.port(config.port());
         configureRouting();
         service.awaitInitialization();
         return this;
@@ -24,6 +24,7 @@ public class Server implements AutoCloseable {
 
     private void configureRouting() {
         service.get("/", (req, res) -> "Hello World");
+        service.get("/alive", (req, res) -> "{\"version\":\"" + config.version() + "\"}");
     }
 
     public void stop() {
