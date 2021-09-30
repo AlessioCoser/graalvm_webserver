@@ -14,13 +14,13 @@ Build the application and the docker image
 ./gradlew clean build
 ```
 ```
-docker build --build-arg VERSION=[build-version] -t webserver .
+docker build --build-arg VERSION=1.0 -t webserver:1.0 .
 ```
 
 ## Run
 Run the docker container 
 ```
-docker run --rm -p 4545:4545 -t webserver
+docker run --rm -p 4545:4545 -t webserver:1.0
 ```
 
 Run the docker container pointing a specific postgresql database
@@ -30,12 +30,12 @@ docker run --rm \
     --env DB_DATABASE=db_name \
     --env DB_USER=another_user \
     --env DB_PASSWORD=another_password \
-    -p 4545:4545 -t webserver
+    -p 4545:4545 -t webserver:1.0
 ```
 
 Run the docker container on different port
 ```
-docker run --rm --env PORT=4321 -p 4321:4321 -t webserver
+docker run --rm --env PORT=4321 -p 4321:4321 -t webserver:1.0
 ```
 
 ## Try it out
