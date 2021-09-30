@@ -29,6 +29,11 @@ docker run --rm --env PORT=4321 -p 4321:4321 -t webserver
 ```
 
 ## Try it out
+Home:
 ```
 curl http://localhost:4545
+```
+Healthcheck:
+```
+curl http://localhost:4545/alive
 ```
