@@ -1,5 +1,6 @@
 package webserver;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,16 +15,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ServerTest {
     @Test
     public void homePathShouldRespondWithHelloWorld() throws Exception {
-        try (Server server = Server.ignite(new Config(4321, null))) {
+        try (Server server = Server.ignite(config(4321, null))) {
             assertEquals("Hello World", get("http://localhost:4321/").body());
         }
     }
 
     @Test
     public void healthcheckShouldReturnTheCurrentVersion() throws Exception {
-        try (Server server = Server.ignite(new Config(4321, "1.0.0"))) {
+        try (Server server = Server.ignite(config(4321, "1.0.0"))) {
             assertEquals("{\"version\":\"1.0.0\"}", get("http://localhost:4321/alive").body());
         }
+    }
+
+    @NotNull
+    private Config config(int port, String version) {
+        return new Config(port, version, null, null, null);
     }
 
     private HttpResponse<String> get(String url) throws IOException, InterruptedException {

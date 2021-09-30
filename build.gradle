@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation 'com.sparkjava:spark-core:2.9.1'
     implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'org.postgresql:postgresql:42.2.6'
+    testImplementation 'org.testcontainers:junit-jupiter:1.14.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
 
