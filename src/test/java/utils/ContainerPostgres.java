@@ -6,7 +6,7 @@ import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy;
 import static org.testcontainers.utility.MountableFile.forClasspathResource;
 
 public class ContainerPostgres extends FixedHostPortGenericContainer {
-    private final Integer port;
+    private final int port;
     private final String user;
     private final String password;
 
@@ -14,7 +14,7 @@ public class ContainerPostgres extends FixedHostPortGenericContainer {
         this(5431, "user", "password");
     }
 
-    public ContainerPostgres(Integer port, String user, String password) {
+    public ContainerPostgres(int port, String user, String password) {
         super("postgres:11");
         this.port = port;
         this.user = user;

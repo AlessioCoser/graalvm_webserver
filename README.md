@@ -23,6 +23,16 @@ Run the docker container
 docker run --rm -p 4545:4545 -t webserver
 ```
 
+Run the docker container pointing a specific postgresql database
+```
+docker run --rm \
+    --env DB_HOST=database_host:5432 \
+    --env DB_DATABASE=db_name \
+    --env DB_USER=another_user \
+    --env DB_PASSWORD=another_password \
+    -p 4545:4545 -t webserver
+```
+
 Run the docker container on different port
 ```
 docker run --rm --env PORT=4321 -p 4321:4321 -t webserver
@@ -36,4 +46,8 @@ curl http://localhost:4545
 Healthcheck:
 ```
 curl http://localhost:4545/alive
+```
+Todo list:
+```
+curl http://localhost:4545/todos
 ```

@@ -6,17 +6,13 @@ import java.sql.SQLException;
 import static java.sql.DriverManager.getConnection;
 
 public class Db {
-    private String host;
-    private String user;
-    private String password;
+    private final DatabaseConfig config;
 
-    public Db(String host, String user, String password) {
-        this.host = host;
-        this.user = user;
-        this.password = password;
+    public Db(DatabaseConfig config) {
+        this.config = config;
     }
 
     public Connection connection() throws SQLException {
-        return getConnection("jdbc:postgresql://" + host + "/tests", user, password);
+        return getConnection("jdbc:postgresql://" + config.dbHost() + "/" + config.dbDatabase(), config.dbUser(), config.dbPassword());
     }
 }

@@ -23,10 +23,12 @@ public class Server implements AutoCloseable {
     }
 
     private void configureRouting() {
-        Db database = new Db(config.dbHost(), config.dbUser(), config.dbPassword());
+        Db database = new Db(config);
+        TodosRepository todosRepository = new TodosRepository(database);
+
         service.get("/", (req, res) -> "Hello World");
         service.get("/alive", (req, res) -> "{\"version\":\"" + config.version() + "\"}");
-        service.get("/todos", new TodosRoute(database));
+        service.get("/todos", new TodosRoute(todosRepository));
     }
 
     public void stop() {

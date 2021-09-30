@@ -29,7 +29,7 @@ public class ServerTest {
 
     @NotNull
     private Config config(int port, String version) {
-        return new Config(port, version, null, null, null);
+        return new Config(port, version, null, null,null, null);
     }
 
     private HttpResponse<String> get(String url) throws IOException, InterruptedException {

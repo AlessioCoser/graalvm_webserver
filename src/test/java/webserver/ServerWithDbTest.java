@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ServerWithDbTest {
     @Container
     public static ContainerPostgres postgres = new ContainerPostgres();
-    private final Db db = new Db(postgres.host(), postgres.user(), postgres.password());
+    private final Db db = new Db(configFrom(postgres));
 
     @Test
     public void todosPathShouldRespondWithAListOfSavedTodos() throws Exception {
@@ -39,7 +39,7 @@ public class ServerWithDbTest {
     }
 
     private Config configFrom(ContainerPostgres postgres) {
-        return new Config(4321, null, postgres.host(), postgres.user(), postgres.password());
+        return new Config(4321, null, postgres.host(), "tests", postgres.user(), postgres.password());
     }
 
     private HttpResponse<String> get(String url) throws IOException, InterruptedException {
