@@ -27,7 +27,7 @@ public class Server implements AutoCloseable {
         TodosRepository todosRepository = new TodosRepository(database);
 
         service.get("/", (req, res) -> "Hello World");
-        service.get("/alive", (req, res) -> "{\"version\":\"" + config.version() + "\"}");
+        service.get("/alive", new HealthCheckRoute(config));
         service.get("/todos", new TodosRoute(todosRepository));
     }
 
